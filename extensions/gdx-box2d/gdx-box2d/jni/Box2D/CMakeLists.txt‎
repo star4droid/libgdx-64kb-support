@@ -1,16 +1,21 @@
-‎cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.10)
 project(gdx-box2d)
 
-# كل ملفات المصدر داخل Box2D
-file(GLOB_RECURSE BOX2D_SRC
-    Box2D/*.cpp
+# ملفات المصدر الخاصة بالمكتبة
+file(GLOB BOX2D_SRC
+    "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
 )
 
+# إنشاء مكتبة مشتركة
 add_library(gdx-box2d SHARED ${BOX2D_SRC})
 
-# ضبط المحاذاة 16KB
+# استخدام C++17
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# محاذاة الصفحة 16KB
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--page-size=16384")
 
-# مكتبات النظام المطلوبة
+# ربط مكتبة log على Android
 find_library(log-lib log)
 target_link_libraries(gdx-box2d ${log-lib})
