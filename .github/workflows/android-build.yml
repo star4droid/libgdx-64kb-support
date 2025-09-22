@@ -27,7 +27,7 @@ jobs:
 
       - name: Build gdx-box2d
         run: |
-          cd extensions/gdx-box2d/gdx-box2d/jni
+          cd extensions/gdx-box2d/jni
           mkdir -p build && cd build
           cmake .. -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
                    -DANDROID_ABI=arm64-v8a \
