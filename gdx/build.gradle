@@ -111,9 +111,8 @@ jnigen {
 	add(Linux, x64, ARM)
 	add(Linux, x64, RISCV)
 	add(Android) {
-        cppFlags.add("-fPIC")
-        linkerFlags.add("-llog")
-        linkerFlags.add("-Wl,--page-size=16384")
+        cppFlags += "-fPIC"
+        linkerFlags += "-llog -Wl,--page-size=16384"
     }
 	add(MacOsX, x64)
 	add(MacOsX, x64, ARM)
